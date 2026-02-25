@@ -1,0 +1,33 @@
+node_modules
+dist
+.expo
+.expo-shared
+.DS_Store
+*.log
+
+# Editor / tooling
+.vscode
+.idea
+.cursor
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.crt
+
+node_modules/
+.expo/
+dist/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+.env
+.env.local
+*.log

@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Line check: anyone can read; anyone can add a report (no auth required for simplicity)
+    match /reports/{reportId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if false;
+    }
+    // Exchange: anyone can read; only authenticated users with @aggies.ncat.edu can create
+    match /exchange/{postId} {
+      allow read: if true;
+      allow create: if request.auth != null
+        && request.auth.token.email.matches('.*[@]aggies[.]ncat[.]edu$');
+      allow update, delete: if false;
+    }
+  }
+}
